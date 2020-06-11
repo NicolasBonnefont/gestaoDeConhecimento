@@ -48,6 +48,7 @@ export default function Login() {
               label="Login"
               variant="outlined"
               value={usuario}
+              required
               onChange={e => setUsuario(e.target.value)}
             />
 
@@ -60,6 +61,8 @@ export default function Login() {
               label="Senha"
               variant="outlined"
               value={senha}
+              type='password'
+              required
               onChange={e => setSenha(e.target.value)}
             />
 

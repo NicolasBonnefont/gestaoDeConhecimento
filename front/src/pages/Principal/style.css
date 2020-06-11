@@ -10,5 +10,7 @@ body{
 .logoMenu{
   width: 100px;
   cursor: pointer;
+  padding: 8px;
+  align-self: center;
 }
 
