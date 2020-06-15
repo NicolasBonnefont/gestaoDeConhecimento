@@ -1,0 +1,26 @@
+.nav{
+  display: flex;
+  flex-direction: row;
+  background-color: #1976d2;
+  text-justify: auto;
+  height:  80px;
+  align-items: center;
+}
+.empresa{
+}
+.nav li{
+  
+  display: flex;
+  margin: 5px;
+  color: white;
+  
+}
+.nav ul{
+  display: flex;
+  
+}
+a{
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
