@@ -5,3 +5,4 @@ const Route = use('Route')
 
 Route.post('/login','UsuarioController.logar')
 Route.post('/usuario','UsuarioController.store').middleware(['auth'])
+Route.get('/usuario','UsuarioController.index').middleware(['auth'])

@@ -19,11 +19,24 @@ class UsuarioController {
   async store ({request, response}){
     const data = await request.all()
 
-    const usuario = await Usuario.create(data)
+    try{
+      const usuario = await Usuario.create(data)
 
-    usuario.save()
+      usuario.save()
 
-    return usuario
+      return usuario
+
+    }catch(err){
+      return response.status(500).send({Erro:"Erro ao cadastrar usuáro ", err})
+    }
+
+  }
+
+  async index ({request, response}){
+
+    const data = await Usuario.all()
+
+    return data
   }
 }
 

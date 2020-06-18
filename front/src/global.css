@@ -10,3 +10,7 @@ body{
   height: 100vh;
   background-color: #eee;
 }
+.containerGlobal{
+  margin-left: 100px;
+  margin-right: 100px;
+}

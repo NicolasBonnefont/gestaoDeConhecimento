@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import logo from '../../assets/empresa/mor/logo.png'
 import api from '../../services/api'
 import Card from '@material-ui/core/Card'
@@ -18,13 +18,13 @@ export default function Login() {
     e.preventDefault()
 
     try {
-     const response =  await api.post('login',
+      const response = await api.post('login',
         {
           "usuario": usuario,
           "senha": senha
         })
-        localStorage.setItem('logado', response.data.token)
-      history.push('/principal')
+      sessionStorage.setItem('logado', response.data.token)
+      history.push('/')
 
     } catch (err) {
       console.log(err)

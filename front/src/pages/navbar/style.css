@@ -3,24 +3,30 @@
   flex-direction: row;
   background-color: #1976d2;
   text-justify: auto;
-  height:  80px;
+  height:  60px;
   align-items: center;
-}
-.empresa{
+  
 }
 .nav li{
   
   display: flex;
   margin: 5px;
   color: white;
+ 
   
 }
 .nav ul{
-  display: flex;
+  display: flex;  
   
 }
-a{
+nav a{
   color: white;
   text-decoration: none;
   cursor: pointer;
+  padding: 5px;
+  display: inline-flex;
+  align-items: flex-end;
+}
+span{
+  margin-left: 5px;
 }
