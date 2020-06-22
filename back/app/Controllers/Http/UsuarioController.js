@@ -38,6 +38,17 @@ class UsuarioController {
 
     return data
   }
+
+  async update ({request, response, params}){
+    const data = await request.all()
+
+    const usuario = await Usuario.findByOrFail('id', params.id)
+
+    await usuario.merge(data)
+    usuario.save()
+
+    return Usuario.all()
+  }
 }
 
 module.exports = UsuarioController

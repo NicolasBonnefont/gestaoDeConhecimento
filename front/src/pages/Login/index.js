@@ -14,6 +14,10 @@ export default function Login() {
   const [usuario, setUsuario] = useState('')
   const history = useHistory()
 
+  if(sessionStorage.getItem('logado')){
+    history.goBack()
+  }
+
   async function handleLogin(e) {
     e.preventDefault()
 

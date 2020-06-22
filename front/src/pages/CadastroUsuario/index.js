@@ -4,6 +4,7 @@ import './styles.css';
 import api from '../../services/api';
 import Menu from './menu'
 
+document.title = 'Cadastrar Usuario'
 // parte do cadastro do usuário
 function CadastroUsuario() {
   const [usuario, setUsuario] = useState('')

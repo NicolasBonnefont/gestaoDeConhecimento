@@ -1,5 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Icon from '@material-ui/core/Icon';
@@ -34,12 +34,12 @@ export default function Navbar() {
       <div className="containerGlobal">
         <ul >
           <li className="empresa">
-            <a href onClick={handleClickPrincipal}>
+            <a  onClick={handleClickPrincipal}>
               MOR INFO
       </a>
           </li>
           <li className="menu">
-            <a href aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+            <a aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
               <Icon>business</Icon>  Cadastro
       </a>
             <Menu
