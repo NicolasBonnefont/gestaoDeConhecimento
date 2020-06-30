@@ -5,7 +5,7 @@ const Route = use('Route')
 // ROTAS PARA AS VIEWS
 Route.on('/').render('login')
 Route.on('/principal').render('principal')
-Route.on('/usuarios').render('cadastros/usuarios')
+Route.on('/usuario').render('cadastro/usuarios')
 
 
 // rotas para as API
