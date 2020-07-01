@@ -1,6 +1,7 @@
 async function cadastrarUsuario() {
   event.preventDefault()
   var url = ''
+  var urlID = ''
   const imgNovo = document.getElementById('imgNovo').files[0]
 
   let data = new FormData()
@@ -15,14 +16,16 @@ async function cadastrarUsuario() {
 
     .then(function (response) {
       url = response.data.url
+      urlID = response.data.urlID
     })
-
+console.log(urlID)
   await axios.post('/api/usuario',
 
     {
       "usuario": document.getElementById('usuario').value,
       "senha": document.getElementById('senha').value,
-      'url': url
+      'url': url,
+      'urlID': urlID
     }, config)
     .then(function (response) {
       alert('Usuario Cadastrado com sucesso ! ')
@@ -38,6 +41,56 @@ async function cadastrarUsuario() {
 
 async function alterarUsuario() {
   event.preventDefault()
+  var url = ''
+  const imageAltera = document.getElementById('imgNovo').files[0]
+
+  let data = new FormData()
+  data.append("file", imgNovo)
+
+  if (!imageAltera == '') {
+
+    await axios.delete("/files/" + urlID, configMultipart)
+
+      .then(function (response) {
+
+      })
+      .catch(function (error) {
+        console.log(error)
+        return alert("Houve um problema, verificar log !")
+      })
+
+
+
+    let dataAltera = new FormData()
+    dataAltera.append("file", imageAltera)
+
+    //CHECA SE FOI FEITO ALTERAÇÃO NA IMG
+    // SE ALTERADO, ASSUME A NOVA URL E ID
+
+
+    await axios.post('/files', dataAltera, configMultipart)
+
+      .then(function (response) {
+        urlAltera = response.data.url
+        urlID = response.data.id
+
+
+      }).catch(function (err) {
+
+        console.log(err)
+
+      });
+
+  }
+
+
+
+
+  await axios.post('/api/usuario',
+  {
+    "usuario": document.getElementById('usuarioAltera').value
+
+  })
 
 }
 async function carregaUsuario() {
@@ -76,6 +129,11 @@ async function igualaUsuario() {
         document.getElementById('usuarioAltera').value = response.data.Usuario
         if(!response.data.url == ''){
           document.getElementById('imageAltera').src = response.data.url
+          sessionStorage.setItem('url', response.data.url)
+          sessionStorage.setItem('urlID', response.data.urlID)
+        }else{
+          sessionStorage.setItem('url','')
+          sessionStorage.setItem('urlID', '')
         }
       })
       .catch(function (erro) {
