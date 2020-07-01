@@ -7,10 +7,11 @@ async function cadastrarUsuario() {
   data.append("file", imgNovo)
 
   const config = {
-    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` }
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
+    'Content-Type': 'multipart/form-data'
   };
 
-  await axios.post('/files', data, configMultipart)
+  await axios.post('/files', data, config)
 
     .then(function (response) {
       url = response.data.url
