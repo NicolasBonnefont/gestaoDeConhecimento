@@ -1,61 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<link href="css/cadastro/index.css" rel="stylesheet" />
 
 <body class="landing-page sidebar-collapse">
- @include('nav/nav')
+  @include('nav/nav')
 
-<div class="section">
+  <div class="section">
 
-</div>
+  </div>
 
   <div class="main main-raised">
     <div class="container">
-      <div class="section text-center">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="title">Gestão de Conhecimento</h2>
-            <h5 class="description">Este espaço foi reservado para que cada usuario colabore com a base de conhecimento da MOR.
-              Facilitando a pesquisa de soluções de problemas já resolvidos anteriormente. Use e abuse das funcionalidades aqui disponibilizada.
+      <div class="section">
 
-            </h5>
+        <div class="row">
+          <div class="col-md-3">
+            <ul class="nav nav-pills nav-pills-rose  flex-column">
+              <li class="nav-item"><a class="nav-link active" href="#tab1" data-toggle="tab">Cadastro</a></li>
+              <li class="nav-item"><a onclick="carregaUsuario()" class="nav-link" href="#tab2" data-toggle="tab">Alterar
+                  / Excluir</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <form id="formCadastro" onsubmit="cadastrarUsuario()">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nome Usuário</label>
+                        <input id="usuario" type="text" class="form-control">
+                      </div>
+
+                      <br>
+                      <div class="form-group">
+                        <label>Senha</label>
+                        <input id="senha" type="password" class="form-control">
+                      </div>
+                    </div>
+
+                      <div class="col-sm-3">
+                        <div class="card  text-center tamanhoPerfil">
+                          <img id="imageNovo" class="card-img-top rounded img-fluid "
+                            src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
+                            alt=" Thumbnail Image ">
+                          <br>
+                          <div class="form-group">
+                            <label for="imgNovo">CARREGAR FOTO<label>
+                                <input onchange="showImageNovo.call(this)" accept=".jpg,.jpeg,.png" type="file"
+                                  class="form-control-file" id="imgNovo">
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                    </div>
+                      <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </form>
+
+              </div>
+
+              <div class="tab-pane" id="tab2">
+
+                <form id="formAltera" onsubmit="alterarUsuario()">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Selecione um Usuário...</label>
+                      <select onchange="igualaUsuario()" class="form-control selectpicker" data-style="btn btn-link"
+                        id="usuariosSelect">
+                        <option>...</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+
+                  <fieldset id="fieldset" disabled>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <form id="formCadastro" onsubmit="cadastrarUsuario()">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Nome Usuário</label>
+                            <input id="usuarioAltera" type="text" class="form-control">
+                          </div>
+                          <br>
+                        </div>
+
+                          <div class="col-sm-3">
+                            <div class="card  text-center tamanhoPerfil">
+                              <img id="imageAltera" class="card-img-top rounded img-fluid "
+                                src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
+                                alt=" Thumbnail Image ">
+                              <br>
+                              <div class="form-group">
+                                <label for="imageAltera">CARREGAR FOTO<label>
+                                    <input onchange="showImageNovo.call(this)" accept=".jpg,.jpeg,.png" type="file"
+                                      class="form-control-file" id="imageAltera">
+                              </div>
+                            </div>
+                          </div>
+                          <br>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <button type="submit" class="btn btn-success">Alterar</button>
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                          </div>
+                        </div>
+                  </fieldset>
+
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="features">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="info">
-                <div class="icon icon-info">
-                  <i class="material-icons">chat</i>
-                </div>
-                <h4 class="info-title">Separado por Tópico</h4>
-                <p>Será criado um tópico e em cada um, um subtopico contendo informações relevantes para futuras pesquisadas e dúvidas.</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="info">
-                <div class="icon icon-success">
-                  <i class="material-icons">verified_user</i>
-                </div>
-                <h4 class="info-title">Usuarios Logados</h4>
-                <p>Este espaço é para fins de pesquisa aos funcionario da MOR. Cada registro sera salvo com o usuário logado !</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="info">
-                <div class="icon icon-danger">
-                  <i class="material-icons">fingerprint</i>
-                </div>
-                <h4 class="info-title">Token de Acesso</h4>
-                <p>Cada usuário tera seu acesso com token exclusivo. Cuide bem dele ! ;)</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
   @include('footer/footer')
   <!--   Core JS Files   -->
-
+  <script src="../js/cadastro/index.js"></script>
 
 </html>
