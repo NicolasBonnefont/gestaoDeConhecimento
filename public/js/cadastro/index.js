@@ -17,7 +17,6 @@ async function cadastrarUsuario() {
       url = response.data.url
     })
 
-
   await axios.post('/api/usuario',
 
     {
@@ -75,16 +74,17 @@ async function igualaUsuario() {
       .then(function (response) {
         document.getElementById('fieldset').disabled = false
         document.getElementById('usuarioAltera').value = response.data.Usuario
-        document.getElementById('imageAltera').src = response.data.url
-        console.log(response.data.url)
-
+        if(!response.data.url == ''){
+          document.getElementById('imageAltera').src = response.data.url
+        }
       })
       .catch(function (erro) {
-
+        console.log(erro)
       })
 
   } else {
     document.getElementById('formAltera').reset()
+    document.getElementById('imageAltera').src = 'https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
     document.getElementById('fieldset').disabled = true
   }
 
