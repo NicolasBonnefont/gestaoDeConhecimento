@@ -9,7 +9,7 @@ Route.on('/').render('login')
 Route.post('/login','LoginController.login')
 Route.on('/principal').render('principal')
 Route.on('/usuario').render('cadastro/usuarios')
-
+Route.get('files/:id', 'FileController.show')
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
 Route.group(() => {

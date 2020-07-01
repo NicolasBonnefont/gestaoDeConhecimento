@@ -75,7 +75,8 @@ async function igualaUsuario() {
       .then(function (response) {
         document.getElementById('fieldset').disabled = false
         document.getElementById('usuarioAltera').value = response.data.Usuario
-        document.getElementById('imgAltera').src = response.data.url
+        document.getElementById('imageAltera').src = response.data.url
+        console.log(response.data.url)
 
       })
       .catch(function (erro) {
