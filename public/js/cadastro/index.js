@@ -28,6 +28,7 @@ async function cadastrarUsuario() {
     .then(function (response) {
       alert('Usuario Cadastrado com sucesso ! ')
       document.getElementById('formCadastro').reset()
+      location.reload()
     })
     .catch(function (erro) {
       console.log(erro)
@@ -69,10 +70,12 @@ async function igualaUsuario() {
   let usuarioSelecionado = document.getElementById('usuariosSelect').value
 
   if (usuarioSelecionado > 0) {
+
     await axios.get('/api/usuario/' + usuarioSelecionado, config)
       .then(function (response) {
         document.getElementById('fieldset').disabled = false
         document.getElementById('usuarioAltera').value = response.data.Usuario
+        document.getElementById('imgNovo').src = response.data.ur
 
       })
       .catch(function (erro) {
