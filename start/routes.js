@@ -9,13 +9,16 @@ Route.on('/').render('login')
 Route.post('/login','LoginController.login')
 Route.on('/principal').render('principal')
 Route.on('/usuario').render('cadastro/usuarios')
-Route.get('files/:id', 'FileController.show')
+Route.get('/files/:id', 'FileController.show')
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
 Route.group(() => {
   Route.post('/api/Usuario','UsuarioController.store')
   Route.get('/api/Usuario','UsuarioController.index')
+  Route.get('/api/logado','LoginController.logado')
   Route.get('/api/Usuario/:id','UsuarioController.show')
+  Route.put('/api/Usuario/:id','UsuarioController.update')
+  Route.delete('/api/Usuario/:id','UsuarioController.destroy')
   Route.post('files', 'FileController.store')
   Route.delete('files/:id', 'FileController.destroy')
 

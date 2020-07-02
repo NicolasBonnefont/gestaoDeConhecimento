@@ -1,9 +1,6 @@
-
-
-
 function verificaAcesso() {
 
-  if(!sessionStorage.getItem('sessao')){
+  if (!sessionStorage.getItem('sessao')) {
     window.location.replace("..");
   }
 
@@ -27,6 +24,18 @@ function deslogar() {
   localStorage.clear()
   window.location.replace("..");
 }
-
 verificaAcesso()
+
+async function imgPerfil() {
+  const config = {
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
+  };
+  await axios.get('/api/logado',config)
+  .then(function(response){
+    document.getElementById('imgLogin').src = response.data.url
+    document.getElementById('imgLogin').alt = response.data.usuario
+  })
+
+}
+imgPerfil()
 

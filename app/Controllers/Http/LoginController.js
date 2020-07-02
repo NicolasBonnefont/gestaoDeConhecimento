@@ -18,6 +18,14 @@ class LoginController {
 
   }
 
+  async logado({auth}){
+
+    const usuario = await auth.getUser()
+
+    return usuario
+
+  }
+
 }
 
 module.exports = LoginController

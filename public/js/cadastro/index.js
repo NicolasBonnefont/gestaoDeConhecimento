@@ -16,10 +16,10 @@ async function cadastrarUsuario() {
 
     .then(function (response) {
       url = response.data.url
-      urlID = response.data.urlID
+      urlID = response.data.id
       console.log(response.data)
     })
-console.log(urlID)
+  console.log(urlID)
   await axios.post('/api/usuario',
 
     {
@@ -31,7 +31,8 @@ console.log(urlID)
     .then(function (response) {
       alert('Usuario Cadastrado com sucesso ! ')
       document.getElementById('formCadastro').reset()
-      location.reload()
+      document.getElementById('imageNovo').src = 'https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
+      //ocation.reload()
     })
     .catch(function (erro) {
       console.log(erro)
@@ -42,34 +43,32 @@ console.log(urlID)
 
 async function alterarUsuario() {
   event.preventDefault()
-  var url = ''
-  const imageAltera = document.getElementById('imgNovo').files[0]
+  var urlID = sessionStorage.getItem('urlID')
+  const imgAltera = document.getElementById('imgAltera').files[0]
+  var urlAltera = ''
 
   let data = new FormData()
-  data.append("file", imgNovo)
+  data.append("file", imgAltera)
 
-  if (!imageAltera == '') {
-
-    await axios.delete("/files/" + urlID, configMultipart)
-
-      .then(function (response) {
-
-      })
-      .catch(function (error) {
-        console.log(error)
-        return alert("Houve um problema, verificar log !")
-      })
+  const config = {
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
+    'Content-Type': 'multipart/form-data'
+  };
 
 
+  if (!imgAltera == '') {
+    if (!urlID == null) {
+      await axios.delete("/files/" + urlID, config)
+        .then(function (response) {
+        })
+        .catch(function (error) {
+          console.log(error)
+          return alert("Houve um problema, verificar log !")
+        })
 
-    let dataAltera = new FormData()
-    dataAltera.append("file", imageAltera)
+    }
 
-    //CHECA SE FOI FEITO ALTERAÇÃO NA IMG
-    // SE ALTERADO, ASSUME A NOVA URL E ID
-
-
-    await axios.post('/files', dataAltera, configMultipart)
+    await axios.post('/files', data, config)
 
       .then(function (response) {
         urlAltera = response.data.url
@@ -84,14 +83,23 @@ async function alterarUsuario() {
 
   }
 
+  await axios.put('/api/usuario/' + document.getElementById('usuariosSelect').value,
+    {
+      "usuario": document.getElementById('usuarioAltera').value,
+      'url': urlAltera,
+      'urlID': urlID
 
-
-
-  await axios.post('/api/usuario',
-  {
-    "usuario": document.getElementById('usuarioAltera').value
-
-  })
+    }, config)
+    .then(function (response) {
+      alert('Usuario alterado com sucesso ! ')
+      document.getElementById('fieldsetAltera').disabled = true
+      document.getElementById('formAltera').reset()
+      document.getElementById('imageAltera').src = 'https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
+    })
+    .catch(function (erro) {
+      console.log(erro)
+      alert('Problema na alteração do usuário, verificar log')
+    })
 
 }
 async function carregaUsuario() {
@@ -126,14 +134,14 @@ async function igualaUsuario() {
 
     await axios.get('/api/usuario/' + usuarioSelecionado, config)
       .then(function (response) {
-        document.getElementById('fieldset').disabled = false
+        document.getElementById('fieldsetAltera').disabled = false
         document.getElementById('usuarioAltera').value = response.data.Usuario
-        if(!response.data.url == ''){
+        if (!response.data.url == '') {
           document.getElementById('imageAltera').src = response.data.url
           sessionStorage.setItem('url', response.data.url)
           sessionStorage.setItem('urlID', response.data.urlID)
-        }else{
-          sessionStorage.setItem('url','')
+        } else {
+          sessionStorage.setItem('url', '')
           sessionStorage.setItem('urlID', '')
         }
       })
@@ -149,6 +157,44 @@ async function igualaUsuario() {
 
 }
 carregaUsuario()
+async function excluirUsuario() {
+  event.preventDefault()
+  var urlID = sessionStorage.getItem('urlID')
+  const config = {
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
+  };
+
+  await Swal.fire({
+    title: 'Excluir?',
+    text: "Você tem certeza que deseja excluir este usuário ?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+      Swal.fire(
+        axios.delete("/files/" + urlID, config),
+        axios.delete('/api/usuario/' + document.getElementById('usuariosSelect').value, config)
+          .then(function (response) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Usuário deletado com sucesso !',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          })
+          .catch(function (erro) {
+            console.log(erro)
+            alert('Problema ao excluir usuário ! ')
+          })
+      )
+    }
+  })
+
+}
 function showImageNovo() {
   if (this.files && this.files[0]) {
     var obj = new FileReader()
@@ -161,7 +207,6 @@ function showImageNovo() {
 }
 
 function showImageAltera() {
-  console.log("NOVO IMG ")
   if (this.files && this.files[0]) {
     var obj = new FileReader()
     obj.onload = function (data) {

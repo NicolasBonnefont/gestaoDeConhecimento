@@ -31,34 +31,34 @@
                       <fieldset>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome Usuário</label>
-                          <input id="usuario" type="text" class="form-control">
+                          <input id="usuario" type="text" class="form-control" required>
                         </div>
 
                         <br>
                         <div class="form-group">
                           <label>Senha</label>
-                          <input id="senha" type="password" class="form-control">
+                          <input id="senha" type="password" class="form-control" required>
                         </div>
-                      </div>
+                  </div>
 
-                        <div class="col-sm-3">
-                          <div class="card  text-center tamanhoPerfil">
-                            <img id="imageNovo" class="card-img-top rounded img-fluid "
-                              src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
-                              alt=" Thumbnail Image ">
-                            <br>
-                            <div class="form-group">
-                              <label for="imgNovo">CARREGAR FOTO<label>
-                                  <input onchange="showImageNovo.call(this)" accept=".jpg,.jpeg,.png" type="file"
-                                    class="form-control-file" id="imgNovo">
-                            </div>
-                          </div>
-                        </div>
-                        <br>
+                  <div class="col-sm-3">
+                    <div class="card  text-center tamanhoPerfil">
+                      <img id="imageNovo" class="card-img-top rounded img-fluid "
+                        src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
+                        alt=" Thumbnail Image ">
+                      <br>
+                      <div class="form-group">
+                        <label for="imgNovo">CARREGAR FOTO<label>
+                            <input onchange="showImageNovo.call(this)" accept=".jpg,.jpeg,.png" type="file"
+                              class="form-control-file" id="imgNovo">
                       </div>
-                        <button type="submit" class="btn btn-success">Cadastrar</button>
-                      </fieldset>
-                    </form>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                </fieldset>
+                </form>
 
               </div>
 
@@ -76,38 +76,40 @@
                   </div>
                   <br>
 
-                  <fieldset id="fieldset" disabled>
+                  <fieldset id="fieldsetAltera" disabled>
                     <div class="row">
                       <div class="col-sm-6">
-                        <form id="formCadastro" onsubmit="cadastrarUsuario()">
+                        <form id="formCadastro" onsubmit="alterarUsuario()">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Nome Usuário</label>
-                            <input id="usuarioAltera" type="text" class="form-control">
+                            <input id="usuarioAltera" type="text" class="form-control" required>
                           </div>
                           <br>
-                        </div>
+                      </div>
 
-                          <div class="col-sm-3">
-                            <div class="card  text-center tamanhoPerfil">
-                              <img id="imageAltera" class="card-img-top rounded img-fluid "
-                                src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
-                                alt=" Thumbnail Image ">
-                              <br>
-                              <div class="form-group">
-                                <label for="imageAltera">CARREGAR FOTO<label>
-                                    <input onchange="showImageNovo.call(this)" accept=".jpg,.jpeg,.png" type="file"
-                                      class="form-control-file" id="imageAltera">
-                              </div>
+                      <div class="col-sm-3">
+                        <div class="text-center tamanhoPerfil ">
+                          <div class="card  ">
+                            <img id="imageAltera" class="card-img-top rounded img-fluid "
+                              src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
+                              alt=" Thumbnail Image ">
+                            <br>
+                            <div class="form-group ">
+                              <label for="imgAltera">CARREGAR FOTO<label>
+                                  <input onchange="showImageAltera.call(this)" accept=".jpg,.jpeg,.png" type="file"
+                                    class="form-control-file" id="imgAltera" >
                             </div>
                           </div>
-                          <br>
                         </div>
-                        <div class="row">
-                          <div class="col">
-                            <button type="submit" class="btn btn-success">Alterar</button>
-                            <button type="submit" class="btn btn-danger">Excluir</button>
-                          </div>
-                        </div>
+                      </div>
+                      <br>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <button type="submit" class="btn btn-success">Alterar</button>
+                        <button type="button" onclick="excluirUsuario()" class="btn btn-danger">Excluir</button>
+                      </div>
+                    </div>
                   </fieldset>
 
                 </form>

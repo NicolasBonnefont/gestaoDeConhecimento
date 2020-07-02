@@ -11,7 +11,12 @@ class File extends Model {
   }
 
   getUrl({ id }){
-    return `http://basemor-com.umbler.net/files/${id}`
+    if(Env.get('HOST') =='127.0.0.1' ){
+      return `http://127.0.0.1:3000/files/${id}`
+    }else{
+      return `http://basemor-com.umbler.net/files/${id}`
+    }
+
 
   }
 

@@ -2,3 +2,14 @@
   width: 85px;
 }
 
+.fotoCustom{
+  padding-left: 10px;
+
+}
+.imgNav{
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+
+  }
