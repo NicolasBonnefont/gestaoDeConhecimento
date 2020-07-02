@@ -17,7 +17,7 @@ async function cadastrarUsuario() {
     .then(function (response) {
       url = response.data.url
       urlID = response.data.urlID
-      console.log(response.data.urlID)
+      console.log(response.data)
     })
 console.log(urlID)
   await axios.post('/api/usuario',
