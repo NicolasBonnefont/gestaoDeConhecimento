@@ -45,7 +45,7 @@ class UsuarioController {
     return usuario
   }
 
-  async destroy({ params }) {
+  async destroy({ response,params }) {
     const user = await Usuarios.findByOrFail('id', params.id)
 
     await user.delete()

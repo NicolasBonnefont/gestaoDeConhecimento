@@ -163,34 +163,45 @@ async function excluirUsuario() {
   const config = {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
+  async function deletar() {
+    await axios.delete('/api/usuario/' + document.getElementById('usuariosSelect').value, config)
+      .then(function (response) {
+        Swal.fire({
+          allowOutsideClick: false,
+          position: 'center',
+          icon: 'success',
+          title: 'Usuario excluido com sucesso !',
+          showConfirmButton: false,
+          timer: 1500
 
-  await Swal.fire({
+        }).then((result) => {
+
+          if (result.dismiss === Swal.DismissReason.timer) {
+            document.getElementById('fieldsetAltera').disabled = true
+            document.getElementById('formAltera').reset()
+            document.getElementById('imageAltera').src = 'https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
+            carregaUsuario()
+          }
+        })
+
+      })
+      .catch(function (error) {
+
+      })
+    await axios.delete('/files/' + urlID, config)
+  }
+  Swal.fire({
     title: 'Excluir?',
     text: "Você tem certeza que deseja excluir este usuário ?",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
+    confirmButtonText: 'Sim, exlcuir!',
+    cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.value) {
-      Swal.fire(
-        axios.delete("/files/" + urlID, config),
-        axios.delete('/api/usuario/' + document.getElementById('usuariosSelect').value, config)
-          .then(function (response) {
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Usuário deletado com sucesso !',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          })
-          .catch(function (erro) {
-            console.log(erro)
-            alert('Problema ao excluir usuário ! ')
-          })
-      )
+      deletar()
     }
   })
 
