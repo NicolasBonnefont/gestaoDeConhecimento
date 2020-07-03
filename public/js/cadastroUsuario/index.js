@@ -143,6 +143,7 @@ async function igualaUsuario() {
         } else {
           sessionStorage.setItem('url', '')
           sessionStorage.setItem('urlID', '')
+          document.getElementById('imageAltera').src = 'https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
         }
       })
       .catch(function (erro) {

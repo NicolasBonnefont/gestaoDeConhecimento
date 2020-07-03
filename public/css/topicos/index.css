@@ -1,0 +1,18 @@
+.cardcustom{
+  max-width: 200px;
+  margin: 10px;
+  padding: 10px;
+  min-height: 140px;
+  justify-content: center;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.cardcCustom:hover{
+  -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+  filter: drop-shadow(15px 10px 5px rgba(99, 88, 88, 0.5));
+}
+.containerCustom{
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+}

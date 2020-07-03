@@ -8,8 +8,11 @@ Route.on('/').render('login')
 // rotas para as API
 Route.post('/login','LoginController.login')
 Route.on('/principal').render('principal')
-Route.on('/usuario').render('cadastro/usuarios')
+Route.on('/usuario').render('cadastroUsuario/usuarios')
+Route.on('/cadastroTopico').render('cadastroTopico/topicos')
 Route.get('/files/:id', 'FileController.show')
+Route.on('/Topicos').render('Topicos/topicos')
+Route.on('/Topicos/:titulo').render('Topicos/topicos')
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
 Route.group(() => {
@@ -21,6 +24,13 @@ Route.group(() => {
   Route.delete('/api/Usuario/:id','UsuarioController.destroy')
   Route.post('files', 'FileController.store')
   Route.delete('files/:id', 'FileController.destroy')
+
+
+  Route.post('/api/Topico','TopicoController.store')
+  Route.get('/api/Topico/:id','TopicoController.show')
+  Route.get('/api/Topico','TopicoController.index')
+  Route.delete('/api/Topico/:id','TopicoController.delete')
+  Route.put('/api/Topico/:id','TopicoController.update')
 
 }).middleware('auth')
 
