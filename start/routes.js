@@ -12,7 +12,7 @@ Route.on('/usuario').render('cadastroUsuario/usuarios')
 Route.on('/cadastroTopico').render('cadastroTopico/topicos')
 Route.on('/editarTopico').render('cadastroTopico/editarTopico')
 Route.get('/files/:id', 'FileController.show')
-Route.on('/topicos').render('opicos/topicos')
+Route.on('/topicos').render('topicos/topicos')
 
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
