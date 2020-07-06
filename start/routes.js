@@ -35,8 +35,8 @@ Route.group(() => {
   Route.delete('/api/Topico/:id','TopicoController.delete')
   Route.put('/api/Topico/:id','TopicoController.update')
 
-  Route.post('/api/subTopico','SubTopicoController.store')
-  Route.get('/api/subTopico/:id','SubTopicoController.show')
+  Route.post('/api/subTopico','SubtopicoController.store')
+  Route.get('/api/subTopico/:id','SubtopicoController.show')
 
 }).middleware('auth')
 
