@@ -1,15 +1,14 @@
 'use strict'
 
 const Topicos = use('App/Models/Topico')
+const SubTopico = use('App/Models/Subtopico')
 
 class TopicoController {
 
   async store({ request, response, params }) {
 
-    console.log('teste')
     const data = await request.all()
 
-    console.log(data)
 
     const topico = await Topicos.create(data)
     await topico.save()
@@ -37,6 +36,7 @@ class TopicoController {
     const topico = await Topicos.findByOrFail('id', params.id)
 
     if(topico){
+      await SubTopico.query().where('id_topico', params.id).delete()
       await topico.delete()
 
       return response.status(200).send({Mensagem: "Tópico deletado com sucesso"})
@@ -45,7 +45,7 @@ class TopicoController {
     }
   }
   async update({request, response, params}){
-    
+
     const topico = await Topicos.findByOrFail('id', params.id)
     const data = await request.all()
 
