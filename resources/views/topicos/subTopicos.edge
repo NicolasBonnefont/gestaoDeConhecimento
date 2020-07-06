@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<body class="landing-page sidebar-collapse">
+  @include('nav/nav')
+
+  <div class="section">
+
+  </div>
+
+  <div class="main main-raised principal">
+    <div class="container">
+
+      <div class="card card-nav-tabs card-plain">
+        <div class="card-header card-header-primary">
+          <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="nav-item">
+                  <a onclick="listarSubTopicos()" class="nav-link active" href="#todos" data-toggle="tab">Todos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#novo" data-toggle="tab">Novo</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="tab-content text-center">
+            <div class="tab-pane active" id="todos">
+              <div id="conteudo">
+
+              </div>
+            </div>
+            <div class="tab-pane" id="novo">
+              <div class="card cardPadding">
+                <h2>Informe o Problema/ Solução para ser documentado :</h2>
+                <br>
+                <form onsubmit="gravarSubTopico()">
+                  <div class="form-group teste ">
+                    <label class="inputTitulo">Titulo</label>
+                    <input type="text" class="form-control col-md-6 inputTitulo" id="titulo" required maxlength="30" >
+                  </div>
+                  <div class="form-group">
+                    <label >Descrição :</label>
+                    <textarea class="form-control inputCustom" rows="10" id="descricao" required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-success">Cadastrar</button>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!--   Core JS Files   -->
+
+  <script src="js/topico/subTopico.js"></script>
+  <link href="css/topicos/index.css" rel="stylesheet" />
+
+</html>
+@include('footer/footer')
