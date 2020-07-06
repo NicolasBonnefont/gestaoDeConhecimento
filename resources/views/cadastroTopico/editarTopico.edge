@@ -13,29 +13,36 @@
     <div class="container">
       <div class="section col-md-6">
 
-            <form id="form" onsubmit="cadastrarTopico()">
-              <div class="form-group ">
-                <label for="exampleInputEmail1">Título do tópico</label>
-                <input id="titulo" type="text" class="form-control" >
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Descrição</label>
-                <input type="text" class="form-control" id="descricao">
-              </div>
-              <br>
-                  <button type="submit" class="btn btn-success">Alterar</button>
-                  <button type="button" class="btn btn-danger">Excluir</button>
-              </form>
-          </div>
-
-
-
-
+        <form id="form" onsubmit="alterarTopico()">
+          <label>Selecione um Tópico...</label>
+          <select onchange="igualaTopico()" class="form-control selectpicker" data-style="btn btn-link"
+            id="topicoSelect">
+          </select>
+          <fieldset id="fieldset" disabled>
+            <div class="form-group ">
+              <label>Título do tópico</label>
+              <input id="titulo" type="text" class="form-control" maxlength="30">
+            </div>
+            <div class="form-group">
+              <label>Descrição</label>
+              <input id="descricao" type="text" class="form-control" >
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success">Alterar</button>
+            <button type="button" onclick="exlcuirTopico()" class="btn btn-danger">Excluir</button>
+          </fieldset>
+        </form>
       </div>
+
+
+
+
     </div>
+  </div>
   </div>
   @include('footer/footer')
   <!--   Core JS Files   -->
 
-  <script src="../js/cadastroTopico/index.js"></script>
+  <script src="js/cadastroTopico/alterarExcluir.js"></script>
+
 </html>
