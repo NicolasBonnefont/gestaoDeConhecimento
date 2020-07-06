@@ -12,8 +12,8 @@ Route.on('/usuario').render('cadastroUsuario/usuarios')
 Route.on('/cadastroTopico').render('cadastroTopico/topicos')
 Route.on('/editarTopico').render('cadastroTopico/editarTopico')
 Route.get('/files/:id', 'FileController.show')
-Route.on('/Topicos').render('Topicos/topicos')
-Route.on('/Topicos/:titulo').render('Topicos/topicos')
+Route.on('/Topicos').render('opicos/topicos')
+
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
 Route.group(() => {
