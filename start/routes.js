@@ -14,6 +14,7 @@ Route.on('/editarTopico').render('cadastroTopico/editarTopico')
 Route.get('/files/:id', 'FileController.show')
 Route.on('/topicos').render('topicos/topicos')
 Route.on('/subTopicos').render('topicos/subTopicos')
+Route.on('/detalhe').render('topicos/detalhe')
 
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
@@ -36,7 +37,9 @@ Route.group(() => {
   Route.put('/api/Topico/:id','TopicoController.update')
 
   Route.post('/api/subTopico','SubtopicoController.store')
-  Route.get('/api/subTopico/:id','SubtopicoController.show')
+  Route.get('/api/subTopico/:id','SubtopicoController.index')
+  Route.get('/api/subTopico/detalhe/:id','SubtopicoController.show')
+  Route.put('/api/subTopico/:id','SubtopicoController.update')
 
 }).middleware('auth')
 

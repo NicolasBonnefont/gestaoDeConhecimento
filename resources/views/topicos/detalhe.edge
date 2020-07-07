@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<body class="landing-page sidebar-collapse">
+  @include('nav/nav')
+  <link href="css/topicos/index.css" rel="stylesheet" />
+  <div class="section"></div>
+
+  <div class="main main-raised principal">
+    <div class="container">
+
+      <div class="tab-content ">
+        <div class="card cardPadding">
+          <div class="card-header card-header-danger">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item">
+                <a class="nav-link active" onclick="history.back()"> <i class="material-icons">arrow_back</i>Voltar</a>
+              </li>
+            </ul>
+          </div>
+          <h2 class="text-center">Informe o Problema/ Solução para ser documentado :</h2>
+          <br>
+          <form class="text-center" onsubmit="alteraSubTopico()">
+            <div class="form-group teste ">
+              <label class="inputTitulo">Titulo</label>
+              <input type="text" class="form-control col-md-6 inputTitulo" id="titulo" required maxlength="30">
+            </div>
+            <div class="form-group">
+              <label>Descrição :</label>
+              <textarea class="form-control inputCustom" rows="15" id="descricao" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Salvar Alterações</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/topico/detalhe.js"></script>
+
+</html>
+@include('footer/footer')

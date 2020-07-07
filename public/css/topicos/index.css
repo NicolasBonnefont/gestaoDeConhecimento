@@ -32,3 +32,6 @@
 .cardPadding{
   padding: 15px;
 }
+.cardSubTopico{
+  cursor: pointer;
+}

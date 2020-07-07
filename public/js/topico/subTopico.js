@@ -12,6 +12,7 @@ async function gravarSubTopico() {
     }, config)
     .then(function (response) {
       alert('Registrado com sucesso !')
+      document.getElementById('form').reset()
     })
     .catch(function (err) {
       console.log(err)
@@ -26,7 +27,7 @@ async function listarSubTopicos() {
   await axios.get('/api/subtopico/' + location.href.split("=").pop(), config)
     .then(function (response) {
       response.data.map(topico =>
-        lista += `<div class="card"> <h4>${topico.Titulo} </h4> </div>`
+        lista += `<div onclick="location.href='/detalhe?id=${topico.id}'" class="card cardSubTopico"> <h4>${topico.Titulo} </h4> </div>`
       )
       document.getElementById('conteudo').innerHTML = lista
     })
