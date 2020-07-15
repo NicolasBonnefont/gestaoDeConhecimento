@@ -23,7 +23,8 @@ async function listarSubTopicos() {
   const config = {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
-  let lista = '<h1>Carregando...</h1>'
+  document.getElementById('conteudo').innerHTML = '<h1>Carregando...</h1>'
+  let lista = ''
   await axios.get('/api/subtopico/' + location.href.split("=").pop(), config)
     .then(function (response) {
       if(response.data.length > 0){
