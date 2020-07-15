@@ -38,7 +38,7 @@ async function listarSubTopicos() {
         document.getElementById('conteudo').innerHTML = lista
       }else{
         document.getElementById('conteudo').innerHTML = `<div class="">
-        <h3>Sem subTópico criado...</h3>
+        <h3>Sem subtópico criado...</h3>
         </div>`
       }
 
