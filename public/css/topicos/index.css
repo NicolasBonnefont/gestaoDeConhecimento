@@ -5,9 +5,12 @@
   margin-top: 0;
   /* padding: 10px; */
    min-height: 140px;
-  justify-content: center;
+  /* justify-content: center; */
   transition: all 0.5s;
   cursor: pointer;
+  background-image: url(https://facil123.com.br/wp-content/uploads/planejamento-financeiro.jpg);
+    background-size: cover;
+    color: rgba(182, 0, 119, 0.91);
 }
 .cardcCustom:hover{
   -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
@@ -47,8 +50,10 @@ a{
 h4{
   text-align: center;
   margin: 0 0 0 0;
+
   /* min-width: 250px; */
 }
 p{
   margin: 0 0 0 0;
+
 }

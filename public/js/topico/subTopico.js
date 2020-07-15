@@ -23,17 +23,24 @@ async function listarSubTopicos() {
   const config = {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
-  let lista = ''
+  let lista = '<h1>Carregando...</h1>'
   await axios.get('/api/subtopico/' + location.href.split("=").pop(), config)
     .then(function (response) {
-      response.data.map(topico =>
-        lista += `<div onclick="location.href='/detalhe?id=${topico.id}'" class="row card cardCustom cardSubTopico">
-         <h4 class="col">${topico.Titulo} </h4>
-         <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
-         <p class="col card-text"><small class="text-muted">Alterado por: ${topico.UsuarioAlteracao ? topico.UsuarioAlteracao : topico.Usuario}</small>
-         </p></div>`
-      )
-      document.getElementById('conteudo').innerHTML = lista
+      if(response.data.length > 0){
+        response.data.map(topico =>
+          lista += `<div onclick="location.href='/detalhe?id=${topico.id}'" class="row card cardCustom cardSubTopico">
+           <h4 class="col">${topico.Titulo} </h4>
+           <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
+           <p class="col card-text"><small class="text-muted">Alterado por: ${topico.UsuarioAlteracao ? topico.UsuarioAlteracao : topico.Usuario}</small>
+           </p></div>`
+        )
+        document.getElementById('conteudo').innerHTML = lista
+      }else{
+        document.getElementById('conteudo').innerHTML = `<div class="">
+        <h3>Sem subTópico criado...</h3>
+        </div>`
+      }
+
     })
     .catch(function (err) {
       console.log(err)

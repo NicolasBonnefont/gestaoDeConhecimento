@@ -1041,7 +1041,7 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
-/*   margin-right: -15px;
+  /*   margin-right: -15px;
   margin-left: -15px; */
 }
 
@@ -15255,7 +15255,7 @@ textarea {
 .nav-pills.nav-pills-rose .nav-item .nav-link.active,
 .nav-pills.nav-pills-rose .nav-item .nav-link.active:focus,
 .nav-pills.nav-pills-rose .nav-item .nav-link.active:hover {
-  background-color:  #0c0251;
+  background-color: #0c0251;
   box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(233, 30, 99, 0.6);
   color: #ffffff;
 }
@@ -16918,6 +16918,10 @@ footer {
   /* Safari */
   /* Safari 6.1+ */
   display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
 }
 
 footer ul {
