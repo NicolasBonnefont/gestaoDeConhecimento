@@ -30,6 +30,14 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
+        <form onsubmit="pesquisar()" class="form-inline ml-auto">
+          <div class="form-group no-border">
+            <input id="pesquisa" type="text" class="form-control" placeholder="Procure algo">
+          </div>
+          <button type="submit" class="btn btn-white btn-just-icon btn-round">
+              <i class="material-icons">search</i>
+          </button>
+      </form>
         <div class=" nav-item">
           <a class="nav-link" href="/topicos">
             <i class="material-icons">topic</i>Topicos
