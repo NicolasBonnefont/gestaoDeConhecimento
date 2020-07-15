@@ -6,14 +6,16 @@
   /* padding: 10px; */
    min-height: 140px;
   /* justify-content: center; */
-  transition: all 0.5s;
   cursor: pointer;
   background-size: cover;
   margin-bottom: 50px;
+  transition: all 0.8s;
+
 }
-.cardcCustom:hover{
-  -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
-  filter: drop-shadow(15px 10px 5px rgba(99, 88, 88, 0.5));
+.cardcustom:hover{
+  -webkit-box-shadow: 16px 16px 46px -1px rgba(88,90,122,1);
+  -moz-box-shadow: 16px 16px 46px -1px rgba(88,90,122,1);
+  box-shadow: 16px 16px 46px -1px rgba(88,90,122,1);
 }
 .containerCustom{
   display: flex;
