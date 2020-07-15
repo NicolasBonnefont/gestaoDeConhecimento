@@ -55,5 +55,8 @@ h4{
 }
 p{
   margin: 0 0 0 0;
-
+}
+.cardTituloTopico{
+  margin: inherit;
+  border-radius: 0
 }

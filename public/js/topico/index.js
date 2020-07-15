@@ -11,7 +11,9 @@ async function listarTopicos() {
     .then(function (response) {
       topicos = response.data
       topicos.map(topico =>
-        conteudo += `<div onclick="location.href='/subTopicos?id=${topico.id}'"" class="card cardcustom"><h4>${topico.Titulo}</h4></div>`)
+        conteudo += `
+        <div style="background-image: url('${topico.Url}');"onclick="location.href='/subTopicos?id=${topico.id}'"" class="card cardcustom">
+        <div class="card cardTituloTopico"> <h4>${topico.Titulo}</h4></div></div>`)
 
 
       document.getElementById('conteudo').innerHTML = conteudo
@@ -49,6 +51,7 @@ async function igualaTopico() {
         document.getElementById('fieldsetAlteracao').disabled = false
         document.getElementById('tituloAlteracao').value = response.data.Titulo
         document.getElementById('descricaoAlteracao').value = response.data.Descricao
+        document.getElementById('urlAlteracao').value = response.data.Url
       })
   }
 
@@ -63,7 +66,8 @@ async function alterarTopico() {
   await axios.put('/api/topico/' + document.getElementById('topicoSelect').value,
     {
       Titulo: document.getElementById('tituloAlteracao').value,
-      Descricao: document.getElementById('descricaoAlteracao').value
+      Descricao: document.getElementById('descricaoAlteracao').value,
+      Url: document.getElementById('urlAlteracao').value
     }, config)
     .then(function (response) {
       alert('Tópico alterado com sucesso ! ')
@@ -111,6 +115,7 @@ function inicializa() {
   document.getElementById('tituloAlteracao').value = ''
   document.getElementById('descricaoAlteracao').value = ''
   document.getElementById('fieldsetAlteracao').disabled = true
+  document.getElementById('urlAlteracao').value = ''
 }
 async function cadastrarTopico(){
   event.preventDefault()
@@ -121,7 +126,8 @@ async function cadastrarTopico(){
   await axios.post('/api/topico',
   {
     "Titulo": document.getElementById('titulo').value,
-    "Descricao": document.getElementById('descricao').value
+    "Descricao": document.getElementById('descricao').value,
+    "Url": document.getElementById('url').value
 
   }, config)
   .then(function(response){
