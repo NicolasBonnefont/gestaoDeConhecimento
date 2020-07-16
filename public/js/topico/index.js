@@ -89,9 +89,14 @@ async function exlcuirTopico() {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
 
-  let confirma = confirm('Deseja mesmo exclcuir este Tópico? Todo o conteúdo relacionado a este topico tambem será excluido !!! ')
-  if (confirma == true) {
-    await axios.delete('/api/topico/' + document.getElementById('topicoSelect').value, config)
+    let existe=[]
+    await axios.get('/api/subtopico/' + document.getElementById('topicoSelect').value, config)
+    .then(function(response){
+      existe = response.data
+    })
+
+    if(!existe.length){
+      await axios.delete('/api/topico/' + document.getElementById('topicoSelect').value, config)
       .then(function (response) {
         alert('Tópico excluido com sucesso !')
         inicializa()
@@ -106,7 +111,12 @@ async function exlcuirTopico() {
         carregarTopico()
 
       })
-  }
+    }else{
+      alert('Existe subtópico criado para este tópico ! Exclusão nao permitida.')
+    }
+
+
+
 
 
 }
