@@ -1,13 +1,14 @@
 'use strict'
 const SubTopico = use('App/Models/Subtopico')
 const Topicos = use('App/Models/Topico')
+const Database = use('Database')
 
 class SubTopicoController {
 
   async store({ request, response, auth }) {
 
     const { id_topico, Titulo, Descricao } = await request.all()
-    const {Usuario} = await auth.getUser()
+    const { Usuario } = await auth.getUser()
 
     console.log(id_topico)
     const existeTopico = await Topicos.findByOrFail('id', id_topico)
@@ -24,16 +25,16 @@ class SubTopicoController {
 
   }
   async update({ request, params, auth }) {
-    const {Titulo, Descricao} = await request.all()
+    const { Titulo, Descricao } = await request.all()
 
     const subTopico = await SubTopico.find(params.id)
-    const {Usuario} = await auth.getUser()
+    const { Usuario } = await auth.getUser()
     const UsuarioAlteracao = Usuario
 
-console.log(Titulo, Descricao, UsuarioAlteracao)
+    console.log(Titulo, Descricao, UsuarioAlteracao)
 
     if (subTopico) {
-      await subTopico.merge({Titulo, Descricao, UsuarioAlteracao})
+      await subTopico.merge({ Titulo, Descricao, UsuarioAlteracao })
       await subTopico.save()
       return subTopico
     } else {
@@ -55,6 +56,16 @@ console.log(Titulo, Descricao, UsuarioAlteracao)
       return response.status(404).send({ mensagem: "SubTopico nao encotrado ! " })
     }
 
+  }
+
+  async pesquisar({ request, response, params }) {
+    const { Pesquisa } = await request.all()
+
+    const data = await Database.raw(`
+    SELECT * FROM subtopicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
+    OR Descricao LIKE "%%%${Pesquisa}%%%" `)
+
+    return data[0]
 
   }
 
