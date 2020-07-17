@@ -38,4 +38,3 @@ async function carregaPesquisa() {
     })
 }
 
-carregaPesquisa()

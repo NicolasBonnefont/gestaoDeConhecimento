@@ -34,6 +34,12 @@ async function imgPerfil() {
   .then(function(response){
     document.getElementById('imgLogin').src = response.data.url
     document.getElementById('imgLogin').alt = response.data.usuario
+    console.log(response.data.Administrador)
+    if(response.data.Administrador == 'N'){
+      document.getElementById('cadastro').style.display = 'none'
+    }else{
+      document.getElementById('cadastro').style.display = 'block'
+    }
   })
 
 }
