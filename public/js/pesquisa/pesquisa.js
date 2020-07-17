@@ -1,7 +1,8 @@
 async function pesquisar() {
   event.preventDefault()
 
-  location.href = '/pesquisa?=' + document.getElementById('pesquisa').value
+  location.href = '/pesquisa'
+  sessionStorage.setItem('pesquisa', document.getElementById('pesquisa').value)
 
 }
 
@@ -12,10 +13,12 @@ async function carregaPesquisa() {
 
   document.getElementById('conteudo').innerHTML = '<h1 class="text-center">Carregando...</h1>'
   let lista = ''
+  let url = sessionStorage.getItem('pesquisa')
+  let pesquisa = url.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   await axios.post('/api/pesquisa',
     {
-      "Pesquisa": location.href.split("=").pop()
+      "Pesquisa": pesquisa
     }, config)
     .then(function (response) {
       if (response.data.length > 0) {
@@ -34,7 +37,7 @@ async function carregaPesquisa() {
       }
 
     })
-    console.log('teste')
+  console.log('teste')
 }
 
 carregaPesquisa()
