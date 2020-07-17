@@ -35,9 +35,7 @@ async function carregaPesquisa() {
       <h3>Sem subtópico localizado...</h3>
       </div>`
       }
-
     })
-  console.log('teste')
 }
 
 carregaPesquisa()
