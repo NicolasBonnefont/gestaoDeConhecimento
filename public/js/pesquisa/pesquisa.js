@@ -31,7 +31,7 @@ async function carregaPesquisa() {
         )
         document.getElementById('conteudo').innerHTML = lista
       } else {
-        document.getElementById('conteudo').innerHTML = `<div class="text-center">
+        document.getElementById('conteudo').innerHTML = `<br><div class="text-center">
       <h3>Sem subtópico localizado...</h3>
       </div>`
       }

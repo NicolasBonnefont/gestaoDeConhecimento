@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
 </head>
+
 <body class="landing-page sidebar-collapse">
   @include('nav/nav')
   <link href="css/topicos/index.css" rel="stylesheet" />
@@ -21,16 +22,21 @@
           </div>
         </div>
         <div class="" id="todos">
-
+          <br>
+          <div class="row">
+            <h4 class="col">Título</h4>
+            <h4 class="col">Modificação</h4>
+            <h4 class="col">Usuário</h4>
+          </div>
           <div id="conteudo">
 
           </div>
 
-      </div>
+        </div>
       </div>
 
     </div>
   </div>
   <script src="js/pesquisa/pesquisa.js" charset="utf-8"></script>
   <script>carregaPesquisa()</script>
-@include('footer/footer')
+  @include('footer/footer')
