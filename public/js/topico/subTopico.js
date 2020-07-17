@@ -48,6 +48,16 @@ async function listarSubTopicos() {
       alert('Erro ao litsar ! Verificar LOG !')
     })
 }
+async function nomeTopico(){
+  const config = {
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
+  };
+  await axios.get('/api/topico/' + location.href.split("=").pop(), config)
+  .then(function(response){
+    document.getElementById('nomeTopico').innerHTML = response.data.Titulo
+  })
+}
+nomeTopico()
 listarSubTopicos()
 //
 

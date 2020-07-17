@@ -30,17 +30,17 @@ async function imgPerfil() {
   const config = {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
-  await axios.get('/api/logado',config)
-  .then(function(response){
-    document.getElementById('imgLogin').src = response.data.url
-    document.getElementById('imgLogin').alt = response.data.usuario
-    console.log(response.data.Administrador)
-    if(response.data.Administrador == 'N'){
-      document.getElementById('cadastro').style.display = 'none'
-    }else{
-      document.getElementById('cadastro').style.display = 'block'
-    }
-  })
+  await axios.get('/api/logado', config)
+    .then(function (response) {
+      document.getElementById('imgLogin').src = response.data.url
+      document.getElementById('imgLogin').alt = response.data.usuario
+      console.log(response.data.Administrador)
+      if (response.data.Administrador == 'N') {
+        document.getElementById('cadastro').style.display = 'none'
+      } else {
+        document.getElementById('cadastro').style.display = 'block'
+      }
+    })
 
 }
 imgPerfil()
