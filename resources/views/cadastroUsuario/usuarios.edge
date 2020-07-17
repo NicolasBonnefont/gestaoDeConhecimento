@@ -21,6 +21,7 @@
                   / Excluir</a></li>
             </ul>
           </div>
+          <br>
           <div class="col">
             <div class="tab-content">
               <div class="tab-pane active" id="tab1">
@@ -29,9 +30,14 @@
                   <div class="col-sm-6">
                     <form id="formCadastro" onsubmit="cadastrarUsuario()">
                       <fieldset>
+                        <br>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome Usuário</label>
                           <input id="usuario" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email</label>
+                          <input id="email" type="email" class="form-control" required>
                         </div>
 
                         <br>
@@ -39,6 +45,8 @@
                           <label>Senha</label>
                           <input id="senha" type="password" class="form-control" required>
                         </div>
+                        <br>
+                        <button type="submit" class="btn btn-success col-sm-12">Cadastrar</button>
                   </div>
 
                   <div class="col-sm-3">
@@ -53,10 +61,11 @@
                               class="form-control-file" id="imgNovo">
                       </div>
                     </div>
+
                   </div>
                   <br>
                 </div>
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+
                 </fieldset>
                 </form>
 
@@ -67,6 +76,7 @@
                 <form id="formAltera" onsubmit="alterarUsuario()">
                   <div class="row">
                     <div class="col-md-6">
+                      <br>
                       <label>Selecione um Usuário...</label>
                       <select onchange="igualaUsuario()" class="form-control selectpicker" data-style="btn btn-link"
                         id="usuariosSelect">
@@ -83,6 +93,10 @@
                           <div class="form-group">
                             <label for="exampleInputEmail1">Nome Usuário</label>
                             <input id="usuarioAltera" type="text" class="form-control" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input id="emailAltera" type="email" class="form-control" required>
                           </div>
                           <br>
                       </div>

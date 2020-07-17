@@ -25,6 +25,7 @@ async function cadastrarUsuario() {
     {
       "usuario": document.getElementById('usuario').value,
       "senha": document.getElementById('senha').value,
+      "email": document.getElementById('email').value,
       'url': url,
       'urlID': urlID
     }, config)
@@ -86,6 +87,7 @@ async function alterarUsuario() {
   await axios.put('/api/usuario/' + document.getElementById('usuariosSelect').value,
     {
       "usuario": document.getElementById('usuarioAltera').value,
+      "email": document.getElementById('emailAltera').value,
       'url': urlAltera,
       'urlID': urlID
 
@@ -136,6 +138,7 @@ async function igualaUsuario() {
       .then(function (response) {
         document.getElementById('fieldsetAltera').disabled = false
         document.getElementById('usuarioAltera').value = response.data.Usuario
+        document.getElementById('emailAltera').value = response.data.Email
         if (!response.data.url == '') {
           document.getElementById('imageAltera').src = response.data.url
           sessionStorage.setItem('url', response.data.url)
