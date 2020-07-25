@@ -20,7 +20,7 @@ class CepController {
   }
 
   async atualizaCEP({ request, response, params }) {
-    const http = axiosRateLimit(Axios.create(), { maxRequests: 1, perMilliseconds: 3000 })
+    const http = axiosRateLimit(Axios.create(), { maxRequests: 1, perMilliseconds: 5000})
 
     let data = await Database.select('*').from('ceps')
 
