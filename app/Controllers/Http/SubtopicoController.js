@@ -61,12 +61,22 @@ class SubTopicoController {
   async pesquisar({ request, response, params }) {
     const { Pesquisa } = await request.all()
 
-    console.log(Pesquisa)
-    const data = await Database.raw(`
+
+    let pesquisa = await Database.raw(`
     SELECT * FROM subtopicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
     OR Descricao LIKE "%%%${Pesquisa}%%%" `)
 
-    return data[0]
+    if(!pesquisa[0]){
+      let pesquisa2 = await Database.raw(`
+      SELECT * FROM topicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
+      OR Descricao LIKE "%%%${Pesquisa}%%%" `)
+
+     let resultado = await SubTopico.findByOrFail('id_topico', pesquisa2[0].id)
+
+     return resultado
+
+    }
+    return pesquisa[0]
 
   }
 

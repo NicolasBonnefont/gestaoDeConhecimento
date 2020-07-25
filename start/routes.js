@@ -16,6 +16,8 @@ Route.on('/topicos').render('topicos/topicos')
 Route.on('/subTopicos').render('topicos/subTopicos')
 Route.on('/detalhe').render('topicos/detalhe')
 Route.on('/pesquisa').render('pesquisa/pesquisa')
+Route.on('/perfil').render('perfil/perfil')
+
 
 
 // GRUPO QUE REQUER AS ROTAS AUTENTICADAS
@@ -44,7 +46,12 @@ Route.group(() => {
 
   Route.post('/api/pesquisa','SubtopicoController.pesquisar')
 
+
+
 }).middleware('auth')
+
+Route.get('/api/allCep','CepController.index')
+Route.post('/api/atualizaCEP','CepController.atualizaCEP')
 
 // ROTA CORINGA PARA MOSTRAR CASO NAO ENCONTRE AS DEMAIS
 Route.on('*').render('404')

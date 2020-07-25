@@ -54,17 +54,17 @@
             </a>
           </div>
         </li>
-        <div class=" nav-item">
-          <a class="nav-link" href="#" onclick="deslogar()">
-            <i class="material-icons">exit_to_app</i>Sair
-          </a>
-        </div>
+
         <li class="dropdown nav-item fotoCustom  ">
-          <a href="#" class="profile-photo dropdown-toggle nav-link fotoCustom ">
+          <a href="#" class="profile-photo dropdown-toggle nav-link fotoCustom" data-toggle="dropdown">
             <div class="profile-photo-small   ">
               <img id="imgLogin" alt="Circle Image" class="img-fluid imgNav rounded">
             </div>
           </a>
+          <ul class="dropdown-menu">
+            <li><a href="/perfil" class="dropdown-item ">Perfil</a></li>
+            <li><a href="#" onclick="deslogar()" class="dropdown-item">Sair</a></li>
+          </ul>
         </li>
       </ul>
     </div>

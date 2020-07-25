@@ -10,6 +10,7 @@
   background-size: cover;
   margin-bottom: 50px;
   transition: all 0.8s;
+  border-radius: 0px;
 
 }
 .cardcustom:hover{
