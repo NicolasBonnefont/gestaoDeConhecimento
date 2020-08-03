@@ -64,31 +64,29 @@ class SubTopicoController {
     let pesquisa = await Database.raw(`
       SELECT * FROM topicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
       OR Descricao LIKE "%%%${Pesquisa}%%%" `)
+      console.log(pesquisa[0])
 
     if (pesquisa[0].length >= 1) {
       console.log('1')
 
       let resultado = await Database.raw(`SELECT * FROM subtopicos WHERE id_topico = "${pesquisa[0][0].id}"`)
 
-      if (resultado[0].length < 1) {
-        console.log('2')
-
-        let pesquisa2 = await Database.raw(`
-        SELECT * FROM subtopicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
-        OR Descricao LIKE "%%%${Pesquisa}%%%" `)
-        return pesquisa2[0]
-
-      }
-      console.log('3')
       return resultado[0]
-    } 
+    }
+    if (pesquisa[0].length < 1) {
+      console.log('2')
+
+      let pesquisa2 = await Database.raw(`
+      SELECT * FROM subtopicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
+      OR Descricao LIKE "%%%${Pesquisa}%%%" `)
+      return pesquisa2[0]
+
+    }
     console.log('4')
     return pesquisa[0]
     /* return response.status(404).send({ Mensagem: 'Não encontrado' }) */
 
-
   }
-
 }
 
 module.exports = SubTopicoController
