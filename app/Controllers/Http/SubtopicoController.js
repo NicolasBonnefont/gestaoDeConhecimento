@@ -7,14 +7,14 @@ class SubTopicoController {
 
   async store({ request, response, auth }) {
 
-    const { id_topico, Titulo, Descricao } = await request.all()
+    const { id_topico, Titulo, Descricao, Status } = await request.all()
     const { Usuario } = await auth.getUser()
 
     console.log(id_topico)
     const existeTopico = await Topicos.findByOrFail('id', id_topico)
 
     if (existeTopico) {
-      const subTopico = SubTopico.create({ id_topico, Titulo, Descricao, Usuario })
+      const subTopico = SubTopico.create({ id_topico, Titulo, Descricao, Usuario, Status })
 
       return subTopico
 
@@ -25,7 +25,7 @@ class SubTopicoController {
 
   }
   async update({ request, params, auth }) {
-    const { Titulo, Descricao } = await request.all()
+    const { Titulo, Descricao, Status } = await request.all()
 
     const subTopico = await SubTopico.find(params.id)
     const { Usuario } = await auth.getUser()
@@ -34,7 +34,7 @@ class SubTopicoController {
     console.log(Titulo, Descricao, UsuarioAlteracao)
 
     if (subTopico) {
-      await subTopico.merge({ Titulo, Descricao, UsuarioAlteracao })
+      await subTopico.merge({ Titulo, Descricao, UsuarioAlteracao, Status })
       await subTopico.save()
       return subTopico
     } else {
@@ -64,7 +64,7 @@ class SubTopicoController {
     let pesquisa = await Database.raw(`
       SELECT * FROM topicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
       OR Descricao LIKE "%%%${Pesquisa}%%%" `)
-      console.log(pesquisa[0])
+    console.log(pesquisa[0])
 
     if (pesquisa[0].length >= 1) {
       console.log('1')

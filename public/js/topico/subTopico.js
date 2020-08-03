@@ -30,7 +30,7 @@ async function listarSubTopicos() {
       if (response.data.length > 0) {
         response.data.map(topico =>
           lista += `<div class="card cardCustom cardSubTopico">
-          <div class="badgeTopico"><span class=" badge badge-${topico.Status =='P' ? 'danger' : 'success' }">${topico.Status}</span></div>
+          <div class="badgeTopico"><span class=" badge badge-${topico.Status ==='P' ? 'danger' : 'success' }">${topico.Status}</span></div>
            <div onclick="location.href='/detalhe?id=${topico.id}'" class="row">
            <h4 class="col">${topico.Titulo} </h4>
            <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
