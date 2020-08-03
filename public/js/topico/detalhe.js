@@ -33,7 +33,7 @@ async function alteraSubTopico() {
   if(document.getElementById('checkbox').checked){
     finalizado = 'F'
   }else{
-    finalizado = 'p'
+    finalizado = 'P'
   }
   let idTopico = 0
   console.log(finalizado)
@@ -46,7 +46,7 @@ async function alteraSubTopico() {
     .then(function (response) {
       idTopico = response.data.id_topico
       alert('Alteração salva com sucesso !')
-      history.back()
+      window.location=document.referrer
     })
     .catch(function (erro) {
       console.log(erro)

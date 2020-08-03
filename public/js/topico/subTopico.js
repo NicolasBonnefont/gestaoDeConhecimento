@@ -28,9 +28,10 @@ async function listarSubTopicos() {
   await axios.get('/api/subtopico/' + location.href.split("=").pop(), config)
     .then(function (response) {
       if (response.data.length > 0) {
+        console.log(response.data)
         response.data.map(topico =>
           lista += `<div class="card cardCustom cardSubTopico">
-          <div class="badgeTopico"><span class=" badge badge-${topico.Status ==='P' ? 'danger' : 'success' }">${topico.Status}</span></div>
+          <div class="badgeTopico"><span class=" badge badge-${topico.Status === 'P' ? 'danger' : 'success'}">${topico.Status}</span></div>
            <div onclick="location.href='/detalhe?id=${topico.id}'" class="row">
            <h4 class="col">${topico.Titulo} </h4>
            <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
@@ -60,6 +61,7 @@ async function nomeTopico() {
       document.getElementById('nomeTopico').innerHTML = response.data.Titulo
     })
 }
+
 nomeTopico()
 listarSubTopicos()
 //
