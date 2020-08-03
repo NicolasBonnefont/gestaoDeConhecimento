@@ -27,16 +27,19 @@ async function listarSubTopicos() {
   let lista = ''
   await axios.get('/api/subtopico/' + location.href.split("=").pop(), config)
     .then(function (response) {
-      if(response.data.length > 0){
+      if (response.data.length > 0) {
         response.data.map(topico =>
-          lista += `<div onclick="location.href='/detalhe?id=${topico.id}'" class="row card cardCustom cardSubTopico">
+          lista += `<div class="card cardCustom cardSubTopico">
+          <div class="badgeTopico"><span class=" badge badge-${topico.Status =='P' ? 'danger' : 'success' }">${topico.Status}</span></div>
+           <div onclick="location.href='/detalhe?id=${topico.id}'" class="row">
            <h4 class="col">${topico.Titulo} </h4>
            <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
            <p class="col card-text"><small class="text-muted">Alterado por: ${topico.UsuarioAlteracao ? topico.UsuarioAlteracao : topico.Usuario}</small>
-           </p></div>`
+           </p></div> </div>
+          `
         )
         document.getElementById('conteudo').innerHTML = lista
-      }else{
+      } else {
         document.getElementById('conteudo').innerHTML = `<br><div class="">
         <h3>Sem subtópico criado...</h3>
         </div>`
@@ -48,14 +51,14 @@ async function listarSubTopicos() {
       alert('Erro ao litsar ! Verificar LOG !')
     })
 }
-async function nomeTopico(){
+async function nomeTopico() {
   const config = {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
   await axios.get('/api/topico/' + location.href.split("=").pop(), config)
-  .then(function(response){
-    document.getElementById('nomeTopico').innerHTML = response.data.Titulo
-  })
+    .then(function (response) {
+      document.getElementById('nomeTopico').innerHTML = response.data.Titulo
+    })
 }
 nomeTopico()
 listarSubTopicos()

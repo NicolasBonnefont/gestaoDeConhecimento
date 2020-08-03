@@ -1,10 +1,10 @@
-.cardcustom{
+.cardcustom {
   max-width: 200px;
   /* margin: 10px; */
   margin-right: 14px;
   margin-top: 0;
   /* padding: 10px; */
-   min-height: 140px;
+  min-height: 140px;
   /* justify-content: center; */
   cursor: pointer;
   background-size: cover;
@@ -13,60 +13,91 @@
   border-radius: 0px;
 
 }
-.cardcustom:hover{
-  -webkit-box-shadow: 16px 16px 46px -1px rgba(88,90,122,1);
-  -moz-box-shadow: 16px 16px 46px -1px rgba(88,90,122,1);
-  box-shadow: 16px 16px 46px -1px rgba(88,90,122,1);
+
+.cardcustom:hover {
+  -webkit-box-shadow: 16px 16px 46px -1px rgba(88, 90, 122, 1);
+  -moz-box-shadow: 16px 16px 46px -1px rgba(88, 90, 122, 1);
+  box-shadow: 16px 16px 46px -1px rgba(88, 90, 122, 1);
 }
-.containerCustom{
+
+.containerCustom {
   display: flex;
   align-content: space-between;
   flex-wrap: wrap;
   justify-content: center;
 }
-.principal{
+
+.principal {
   background: #eee;
 }
-.inputCustom{
+
+.inputCustom {
   border: solid;
   border-width: 0.3px;
 }
-.inputTitulo{
+
+.inputTitulo {
   display: inline-flex;
 }
-.teste{
+
+.teste {
   display: inline;
 }
-.cardPadding{
+
+.cardPadding {
   padding: 15px;
 }
-.cardSubTopico{
+
+.cardSubTopico {
+  padding: 15px;
+  cursor: pointer;
+  /* flex-flow: wrap; */
+  /* justify-content: space-between; */
+  display: flex;
+}
+
+.cardSubTopicoPesquisa {
   padding: 15px;
   cursor: pointer;
   flex-flow: wrap;
   /* justify-content: space-between; */
   display: flex;
 }
-a{
+
+a {
   cursor: pointer;
 }
-p{
+
+p {
   margin: 0 0 0 0;
 }
-.cardTituloTopico{
+
+.cardTituloTopico {
   margin: inherit;
   border-radius: 0;
   margin-top: -20px;
   color: rgba(0, 12, 94, 0.8);
 }
-h4, .h4 {
+
+h4,
+.h4 {
   font-size: medium;
-  line-height: 1.5em;  text-align: center;
+  line-height: 1.5em;
+  text-align: center;
   margin: 0 0 0 0;
   font-size: 1;
   margin: 0;
 
 }
-h3{
+
+h3 {
   margin: 0;
+}
+
+.badgeTopico {
+  align-self: flex-end;
+ /*  margin-top: -15px; */
+  margin-right: -10px;
+  margin-bottom: -25px;
+  align-self: flex-end;
 }
