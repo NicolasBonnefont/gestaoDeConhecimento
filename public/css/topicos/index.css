@@ -114,3 +114,6 @@ h3 {
 .containerTitulo{
   margin-top: 20px;
 }
+.divAnexos{
+  cursor: pointer;
+}
