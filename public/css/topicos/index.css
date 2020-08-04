@@ -111,3 +111,6 @@ h3 {
 .togglebutton label input[type=checkbox]:checked+.toggle {
   background-color: rgb(50 176 39 / 70%);
 }
+.containerTitulo{
+  margin-top: 20px;
+}

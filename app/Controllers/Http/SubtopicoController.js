@@ -31,8 +31,6 @@ class SubTopicoController {
     const { Usuario } = await auth.getUser()
     const UsuarioAlteracao = Usuario
 
-    console.log(Titulo, Descricao, UsuarioAlteracao)
-
     if (subTopico) {
       await subTopico.merge({ Titulo, Descricao, UsuarioAlteracao, Status })
       await subTopico.save()
@@ -85,6 +83,18 @@ class SubTopicoController {
     console.log('4')
     return pesquisa[0]
     /* return response.status(404).send({ Mensagem: 'Não encontrado' }) */
+
+  }
+  async destroy({ request, response, params }) {
+
+    try {
+      const subtopico = await SubTopico.find(params.id)
+        await subtopico.delete()
+        return response.status(200).send({ Mensagen: 'Subopico deletado com sucesso !' })
+
+    } catch (erro) {
+      return response.status(404).send({ Mensagen: 'Subopico inválido', erro })
+    }
 
   }
 }

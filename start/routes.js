@@ -43,6 +43,7 @@ Route.group(() => {
   Route.get('/api/subTopico/:id','SubtopicoController.index')
   Route.get('/api/subTopico/detalhe/:id','SubtopicoController.show')
   Route.put('/api/subTopico/:id','SubtopicoController.update')
+  Route.delete('/api/subTopico/:id','SubtopicoController.destroy')
 
   Route.post('/api/pesquisa','SubtopicoController.pesquisar')
 

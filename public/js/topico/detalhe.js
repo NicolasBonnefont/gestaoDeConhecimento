@@ -29,10 +29,10 @@ async function alteraSubTopico() {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
   };
 
-  let finalizado =''
-  if(document.getElementById('checkbox').checked){
+  let finalizado = ''
+  if (document.getElementById('checkbox').checked) {
     finalizado = 'F'
-  }else{
+  } else {
     finalizado = 'P'
   }
   let idTopico = 0
@@ -46,7 +46,7 @@ async function alteraSubTopico() {
     .then(function (response) {
       idTopico = response.data.id_topico
       alert('Alteração salva com sucesso !')
-      window.location=document.referrer
+      window.location = document.referrer
     })
     .catch(function (erro) {
       console.log(erro)
@@ -55,5 +55,26 @@ async function alteraSubTopico() {
 
 
 }
+async function excluirSubtopico() {
+  event.preventDefault()
 
+  const config = {
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('sessao')}` },
+  };
+
+  let confirma = confirm('Deseja mesmo excluir este subtopico ?')
+  if (confirma == true) {
+    await axios.delete('/api/subTopico/' + location.href.split("=").pop(), config)
+      .then(function (response) {
+        alert('SubTopico deletado com sucesso !')
+        window.location = document.referrer
+      })
+      .catch(function (erro) {
+        console.log(erro)
+        alert('Problema ao deletar o subTopico. Verificar o LOG !')
+        window.location = document.referrer
+      })
+  }
+
+}
 
