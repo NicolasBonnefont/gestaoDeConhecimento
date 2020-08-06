@@ -47,14 +47,12 @@ class FileController {
 
     const file = await File.findOrFail(params.id)
 
-   // return response.download(Helpers.publicPath(`uploads/${file.file}`))
+    return response.download(Helpers.publicPath(`uploads/${file.file}`))
 
-    return Helpers.tmpPath('http://basemor-com.umbler.net/'+ file.file)
 
 
 
   }
-
   async destroy({ params, response }) {
     const file = await File.findByOrFail(params.id)
     await file.delete()
@@ -66,6 +64,16 @@ class FileController {
     catch (err) {
       return response.status(500).send({ Erro: 'Problema na exclusão da IMG', err })
     }
+
+  }
+  async download({}){
+    const filePath = `uploads/${params.fileName}`;
+    const isExist = await Drive.exists(filePath);
+
+    if (isExist) {
+        return response.download(Helpers.tmpPath(filePath));
+    }
+    return 'File does not exist';
 
   }
 }

@@ -9,9 +9,8 @@ const providers = [
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/mail/providers/MailProvider',
   '@adonisjs/framework/providers/ViewProvider',
-  '@adonisjs/cors/providers/CorsProvider'
-
-
+  '@adonisjs/cors/providers/CorsProvider',
+  '@adonisjs/drive/providers/DriveProvider'
 
 ]
 
