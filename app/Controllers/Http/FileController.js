@@ -49,7 +49,7 @@ class FileController {
 
    // return response.download(Helpers.publicPath(`uploads/${file.file}`))
 
-    return file.file
+    return Helpers.tmpPath(file.file)
 
 
 
