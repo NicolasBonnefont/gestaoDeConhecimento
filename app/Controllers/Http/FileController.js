@@ -47,9 +47,9 @@ class FileController {
 
     const file = await File.findOrFail(params.id)
 
-    return response.download(Helpers.publicPath(`uploads/${file.file}`)) 
+   // return response.download(Helpers.publicPath(`uploads/${file.file}`))
 
-    //return file
+    return file
 
 
 
