@@ -16697,7 +16697,7 @@ h2.title {
 
 .togglebutton label {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.26);
+  color: rgb(12 1 58);
 }
 
 .form-group.is-focused .togglebutton label {
@@ -16771,7 +16771,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:after {
-  border-color: #9c27b0;
+  /* border-color: #9c27b0; */
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:active:after {

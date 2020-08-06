@@ -3,6 +3,7 @@
 
 <body class="landing-page sidebar-collapse">
   @include('nav/nav')
+
   <link href="css/topicos/index.css" rel="stylesheet" />
   <div class="section"></div>
 
@@ -29,19 +30,25 @@
           <br>
           <form class="text-center" onsubmit="alteraSubTopico()">
             <div class="row">
-              <div class="col-sm-10">
+              <div class="col-sm-8">
                 <div class="form-group teste ">
                   <label class="inputTitulo">Titulo</label>
                   <input type="text" class="form-control col-md-6 inputTitulo" id="titulo" required maxlength="30">
                 </div>
               </div>
-              <div class="col divAnexos">
-                <div class="icon icon-primary">
-                  <i class="material-icons">chat</i>
-                  <p>Anexos</p>
-                </div>
+              <div class="col">
+                  <div class="form-group togglebutton ">
+                    <label for="imgAltera" class="anexos"> <i class="material-icons anexos">attach_file</i> <br>ANEXOS<label>
+                        <input type="file" class="form-control-file" id="anexos">
+                  </div>
               </div>
+              <div class="col">
+                <a href="http://basemor-com.umbler.net/files/71"><div class="form-group togglebutton ">
 
+                  <label for="imgAltera" class="anexos"> <i class="material-icons anexos">cloud_download</i> <br>Download<label>
+                      <!-- <input type="file" class="form-control-file" id="download"> --></a>
+                </div>
+            </div>
             <div class="col">
                 <div class="togglebutton ">
                   <label>
@@ -65,6 +72,11 @@
   </div>
 
   <script src="js/topico/detalhe.js"></script>
+
+
+
+  <script src="/js/nav/jquery.min.js" type="text/javascript"></script>
+
 
 </html>
 @include('footer/footer')

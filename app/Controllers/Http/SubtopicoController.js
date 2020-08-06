@@ -97,6 +97,12 @@ class SubTopicoController {
     }
 
   }
+
+  async fileUpload({reque, response, params}){
+
+  }
+
 }
+
 
 module.exports = SubTopicoController

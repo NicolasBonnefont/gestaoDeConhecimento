@@ -47,13 +47,16 @@ class FileController {
 
     const file = await File.findOrFail(params.id)
 
-    return response.download(Helpers.publicPath(`uploads/${file.file}`))
+    return response.download(Helpers.publicPath(`uploads/${file.file}`)) 
+
+    //return file
+
 
 
   }
 
   async destroy({ params, response }) {
-    const file = await File.findByOrFail(params)
+    const file = await File.findByOrFail(params.id)
     await file.delete()
 
     try {

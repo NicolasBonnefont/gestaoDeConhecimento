@@ -31,6 +31,7 @@ Route.group(() => {
   Route.delete('/api/Usuario/:id','UsuarioController.destroy')
   Route.post('files', 'FileController.store')
   Route.delete('files/:id', 'FileController.destroy')
+  Route.get('files/:id', 'FileController.show')
 
 
   Route.post('/api/Topico','TopicoController.store')
