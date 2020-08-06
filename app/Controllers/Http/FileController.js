@@ -67,7 +67,8 @@ class FileController {
 
   }
   async download({}){
-    const filePath = `uploads/${params.fileName}`;
+    const file = await File.findOrFail(params.id)
+    const filePath =`uploads/${file.file}`;
     const isExist = await Drive.exists(filePath);
 
     if (isExist) {
