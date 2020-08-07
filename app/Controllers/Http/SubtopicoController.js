@@ -60,14 +60,15 @@ class SubTopicoController {
     const { Pesquisa } = await request.all()
 
     let pesquisa = await Database.raw(`
-      SELECT * FROM topicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
+      SELECT *, DATE_FORMAT(updated_at, "%d%m%y-%T")AS updated_at FROM topicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
       OR Descricao LIKE "%%%${Pesquisa}%%%" `)
     console.log(pesquisa[0])
 
     if (pesquisa[0].length >= 1) {
       console.log('1')
 
-      let resultado = await Database.raw(`SELECT * FROM subtopicos WHERE id_topico = "${pesquisa[0][0].id}"`)
+      let resultado = await Database
+      .raw(`SELECT *, DATE_FORMAT(updated_at, "%d%m%y-%T")AS updated_at FROM subtopicos WHERE id_topico = "${pesquisa[0][0].id}"`)
 
       return resultado[0]
     }
@@ -75,7 +76,7 @@ class SubTopicoController {
       console.log('2')
 
       let pesquisa2 = await Database.raw(`
-      SELECT * FROM subtopicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
+      SELECT *, DATE_FORMAT(updated_at, "%d%m%y-%T")AS updated_at FROM subtopicos WHERE Titulo LIKE "%%%${Pesquisa}%%%"
       OR Descricao LIKE "%%%${Pesquisa}%%%" `)
       return pesquisa2[0]
 

@@ -31,7 +31,7 @@ async function logar() {
           }).then((result) => {
 
             if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.replace("principal");
+              window.location.replace("topicos");
             }
           })
       })

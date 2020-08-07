@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-  <meta charset="UTF-8">
-</head>
-
 <body class="landing-page sidebar-collapse">
   @include('nav/nav')
   <link href="css/topicos/index.css" rel="stylesheet" />
   <div class="section">
+
 
   </div>
 
@@ -21,13 +18,13 @@
             <h3 class=""> Tópicos localizados :</h3>
           </div>
         </div>
-        <div class="" id="todos">
+        <div class="tab-pane active" id="todos">
           <br>
-          <div class="row">
+<!--           <div class="row">
             <h4 class="col">Título</h4>
             <h4 class="col">Modificação</h4>
             <h4 class="col">Usuário</h4>
-          </div>
+          </div> -->
           <div id="conteudo">
 
           </div>
@@ -38,5 +35,5 @@
     </div>
   </div>
   <script src="js/pesquisa/pesquisa.js" charset="utf-8"></script>
-  <script>carregaPesquisa()</script>
+
   @include('footer/footer')

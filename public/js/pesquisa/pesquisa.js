@@ -23,11 +23,13 @@ async function carregaPesquisa() {
     .then(function (response) {
       if (response.data.length > 0) {
         response.data.map(topico =>
-          lista += `<div onclick="location.href='/detalhe?id=${topico.id}'" class="text-center row card cardCustom cardSubTopicoPesquisa">
-         <h4 class="col">${topico.Titulo} </h4>
-         <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
-         <p class="col card-text"><small class="text-muted">Alterado por: ${topico.UsuarioAlteracao ? topico.UsuarioAlteracao : topico.Usuario}</small>
-         </p></div>`
+          lista += `<div class="card cardCustom cardSubTopico">
+          <div class="badgeTopico"><span class=" badge badge-${topico.Status === 'P' ? 'danger' : 'success'}">${topico.Status}</span></div>
+           <div onclick="location.href='/detalhe?id=${topico.id}'" class="row">
+           <h4 class="col">${topico.Titulo} </h4>
+           <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
+           <p class="col card-text"><small class="text-muted">Alterado por: ${topico.UsuarioAlteracao ? topico.UsuarioAlteracao : topico.Usuario}</small>
+           </p></div> </div>`
         )
         document.getElementById('conteudo').innerHTML = lista
       } else {
@@ -37,3 +39,4 @@ async function carregaPesquisa() {
       }
     })
 }
+carregaPesquisa() 

@@ -23,52 +23,62 @@
           </div>
           <div class="row containerTitulo">
             <div class="col-sm-10">
-              <h3 class="text-center">Informe o Problema/ Solução para ser documentado :</h3>
+              <h3 class="text-left">Informe o Problema/ Solução para ser documentado</h3>
             </div>
 
           </div>
           <br>
           <form class="text-center" onsubmit="alteraSubTopico()">
+
             <div class="row">
-              <div class="col-sm-8">
+
+              <div class="col-sm-8  text-left">
                 <div class="form-group teste ">
-                  <label class="inputTitulo">Titulo</label>
+                  <h3 class=" text-left">Titulo: </h3><br>
                   <input type="text" class="form-control col-md-6 inputTitulo" id="titulo" required maxlength="30">
                 </div>
               </div>
-              <div class="col">
-                  <div class="form-group togglebutton ">
-                    <label for="imgAltera" class="anexos"> <i class="material-icons anexos">attach_file</i> <br>ANEXOS<label>
-                        <input type="file" class="form-control-file" id="anexos">
-                  </div>
-              </div>
-              <div class="col">
-                <a href="http://basemor-com.umbler.net/files/71"><div class="form-group togglebutton ">
 
-                  <label for="imgAltera" class="anexos"> <i class="material-icons anexos">cloud_download</i> <br>Download<label>
-                      <!-- <input type="file" class="form-control-file" id="download"> --></a>
+              <div class="col">
+                <div class="form-group togglebutton ">
+                  <label for="imgAltera" class="anexos"> <i
+                      class="material-icons anexos">attach_file</i><br>ANEXOS<label>
+                      <input type="file" class="form-control-file" id="anexos">
                 </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group togglebutton ">
+                <a href="/files/79" download="w3logo.apk">
+                    <label for="imgAltera" class="anexos"> <i
+                        class="material-icons anexos">cloud_download</i><br>Download<label></a>
+              </div>
             </div>
-            <div class="col">
-                <div class="togglebutton ">
-                  <label>
-                    <input type="checkbox" id="checkbox">
-                    <span class="toggle spanFinalziado"></span>
-                    Finalizado
-                  </label>
-                </div>
-            </div>
-          </div>
-            <div class="form-group">
-              <label>Descrição :</label>
-              <textarea class="form-control inputCustom" rows="10" id="descricao" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Salvar Alterações</button>
-            <button onclick="excluirSubtopico()" type="button" class="btn btn-danger">Excluir</button>
-          </form>
+
+              <div class="togglebutton ">
+                <label>
+                  <input type="checkbox" id="checkbox">
+                  <span class="toggle spanFinalziado"></span>
+                  Finalizado
+                </label>
+              </div>
         </div>
+
+        <div class="row">
+
+        </div>
+      <div class="form-group col">
+        <br>
+        <h3 class="text-left">Descrição :</h3>
+        <textarea class="form-control inputCustom " rows="10" id="descricao" required></textarea>
       </div>
+      <button type="submit" class="btn btn-success">Salvar Alterações</button>
+      <button onclick="excluirSubtopico()" type="button" class="btn btn-danger">Excluir</button>
+      </form>
     </div>
+  </div>
+  </div>
+  </div>
   </div>
 
   <script src="js/topico/detalhe.js"></script>

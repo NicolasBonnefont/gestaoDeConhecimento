@@ -49,7 +49,6 @@ Route.group(() => {
   Route.post('/api/pesquisa','SubtopicoController.pesquisar')
 
 
-
 }).middleware('auth')
 
 Route.get('/api/allCep','CepController.index')

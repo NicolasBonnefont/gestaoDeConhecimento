@@ -36,8 +36,7 @@ async function listarSubTopicos() {
            <h4 class="col">${topico.Titulo} </h4>
            <p class="col card-text"><small class="text-muted">Ultima atualização: ${topico.updated_at}</small></p>
            <p class="col card-text"><small class="text-muted">Alterado por: ${topico.UsuarioAlteracao ? topico.UsuarioAlteracao : topico.Usuario}</small>
-           </p></div> </div>
-          `
+           </p></div> </div>`
         )
         document.getElementById('conteudo').innerHTML = lista
       } else {

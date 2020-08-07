@@ -2,6 +2,8 @@
 const File = use('App/Models/File')
 const Helpers = use('Helpers')
 const fs = require('fs')
+const Drive = use('Drive');
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -13,9 +15,9 @@ class FileController {
 
       if (!request.file('file')) return response.status(200).send({ mensagem: "erro" })
 
-      const upload = request.file('file', { size: '10mb' })
+      const upload = request.file('file'/* , { size: '10mb' } */)
 
-      const fileName = `${Date.now()}.${upload.subtype}`
+      const fileName = `${upload.clientName}`
 
       await upload.move(Helpers.publicPath('uploads'), {
         name: fileName
@@ -50,8 +52,6 @@ class FileController {
     return response.download(Helpers.publicPath(`uploads/${file.file}`))
 
 
-
-
   }
   async destroy({ params, response }) {
     const file = await File.findByOrFail(params.id)
@@ -66,16 +66,12 @@ class FileController {
     }
 
   }
-  async download({}){
-    console.log('teste')
+  async down({params, response}){
     const file = await File.findOrFail(params.id)
-    const filePath =`uploads/${file.file}`;
-    const isExist = await Drive.exists(filePath);
+    console.log(file)
 
-    if (isExist) {
-        return response.download(Helpers.tmpPath(filePath));
-    }
-    return 'File does not exist';
+    return response.download(Helpers.publicPath(`uploads/${file.file}`))
+
 
   }
 }
